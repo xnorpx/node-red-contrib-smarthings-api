@@ -1,0 +1,3357 @@
+<script type="text/javascript">
+    RED.nodes.registerType('smarthings-api', {
+        category: 'function',
+        color: '#89bf04',
+        defaults: {
+            service: { value: "", type: "smarthings-api-service", required: true },
+            method: { value: "", required: true },
+            getDevices_capability: { value: "" },
+            getDevices_capabilityType: { value: "str" },
+            getDevices_locationId: { value: "" },
+            getDevices_locationIdType: { value: "str" },
+            getDevices_deviceId: { value: "" },
+            getDevices_deviceIdType: { value: "str" },
+            getDevices_authorization: { value: "" },
+            getDevices_authorizationType: { value: "str" },
+            installDevice_installationRequest: { value: "" },
+            installDevice_installationRequestType: { value: "str" },
+            installDevice_authorization: { value: "" },
+            installDevice_authorizationType: { value: "str" },
+            getDevice_authorization: { value: "" },
+            getDevice_authorizationType: { value: "str" },
+            getDevice_deviceId: { value: "" },
+            getDevice_deviceIdType: { value: "str" },
+            deleteDevice_authorization: { value: "" },
+            deleteDevice_authorizationType: { value: "str" },
+            deleteDevice_deviceId: { value: "" },
+            deleteDevice_deviceIdType: { value: "str" },
+            updateDevice_updateDeviceRequest: { value: "" },
+            updateDevice_updateDeviceRequestType: { value: "str" },
+            updateDevice_authorization: { value: "" },
+            updateDevice_authorizationType: { value: "str" },
+            updateDevice_deviceId: { value: "" },
+            updateDevice_deviceIdType: { value: "str" },
+            executeDeviceCommands_executeCapabilityCommand: { value: "" },
+            executeDeviceCommands_executeCapabilityCommandType: { value: "str" },
+            executeDeviceCommands_authorization: { value: "" },
+            executeDeviceCommands_authorizationType: { value: "str" },
+            executeDeviceCommands_deviceId: { value: "" },
+            executeDeviceCommands_deviceIdType: { value: "str" },
+            createDeviceEvents_deviceEventRequest: { value: "" },
+            createDeviceEvents_deviceEventRequestType: { value: "str" },
+            createDeviceEvents_authorization: { value: "" },
+            createDeviceEvents_authorizationType: { value: "str" },
+            createDeviceEvents_deviceId: { value: "" },
+            createDeviceEvents_deviceIdType: { value: "str" },
+            getDeviceStatus_authorization: { value: "" },
+            getDeviceStatus_authorizationType: { value: "str" },
+            getDeviceStatus_deviceId: { value: "" },
+            getDeviceStatus_deviceIdType: { value: "str" },
+            getDeviceComponentStatus_authorization: { value: "" },
+            getDeviceComponentStatus_authorizationType: { value: "str" },
+            getDeviceComponentStatus_deviceId: { value: "" },
+            getDeviceComponentStatus_deviceIdType: { value: "str" },
+            getDeviceComponentStatus_componentId: { value: "" },
+            getDeviceComponentStatus_componentIdType: { value: "str" },
+            getDeviceStatusByCapability_authorization: { value: "" },
+            getDeviceStatusByCapability_authorizationType: { value: "str" },
+            getDeviceStatusByCapability_deviceId: { value: "" },
+            getDeviceStatusByCapability_deviceIdType: { value: "str" },
+            getDeviceStatusByCapability_componentId: { value: "" },
+            getDeviceStatusByCapability_componentIdType: { value: "str" },
+            getDeviceStatusByCapability_capabilityId: { value: "" },
+            getDeviceStatusByCapability_capabilityIdType: { value: "str" },
+            createDeviceProfile_authorization: { value: "" },
+            createDeviceProfile_authorizationType: { value: "str" },
+            createDeviceProfile_request: { value: "" },
+            createDeviceProfile_requestType: { value: "str" },
+            listDeviceProfiles_authorization: { value: "" },
+            listDeviceProfiles_authorizationType: { value: "str" },
+            getDeviceProfile_authorization: { value: "" },
+            getDeviceProfile_authorizationType: { value: "str" },
+            getDeviceProfile_deviceProfileId: { value: "" },
+            getDeviceProfile_deviceProfileIdType: { value: "str" },
+            deleteDeviceProfile_authorization: { value: "" },
+            deleteDeviceProfile_authorizationType: { value: "str" },
+            deleteDeviceProfile_deviceProfileId: { value: "" },
+            deleteDeviceProfile_deviceProfileIdType: { value: "str" },
+            listLocations_authorization: { value: "" },
+            listLocations_authorizationType: { value: "str" },
+            createLocation_createLocationRequest: { value: "" },
+            createLocation_createLocationRequestType: { value: "str" },
+            createLocation_authorization: { value: "" },
+            createLocation_authorizationType: { value: "str" },
+            getLocation_authorization: { value: "" },
+            getLocation_authorizationType: { value: "str" },
+            getLocation_locationId: { value: "" },
+            getLocation_locationIdType: { value: "str" },
+            updateLocation_updateLocationRequest: { value: "" },
+            updateLocation_updateLocationRequestType: { value: "str" },
+            updateLocation_authorization: { value: "" },
+            updateLocation_authorizationType: { value: "str" },
+            updateLocation_locationId: { value: "" },
+            updateLocation_locationIdType: { value: "str" },
+            deleteLocation_authorization: { value: "" },
+            deleteLocation_authorizationType: { value: "str" },
+            deleteLocation_locationId: { value: "" },
+            deleteLocation_locationIdType: { value: "str" },
+            listInstallations_authorization: { value: "" },
+            listInstallations_authorizationType: { value: "str" },
+            listInstallations_locationId: { value: "" },
+            listInstallations_locationIdType: { value: "str" },
+            listInstallations_installedAppStatus: { value: "" },
+            listInstallations_installedAppStatusType: { value: "str" },
+            getInstallation_authorization: { value: "" },
+            getInstallation_authorizationType: { value: "str" },
+            getInstallation_installedAppId: { value: "" },
+            getInstallation_installedAppIdType: { value: "str" },
+            deleteInstallation_authorization: { value: "" },
+            deleteInstallation_authorizationType: { value: "str" },
+            deleteInstallation_installedAppId: { value: "" },
+            deleteInstallation_installedAppIdType: { value: "str" },
+            deleteInstallation_locationId: { value: "" },
+            deleteInstallation_locationIdType: { value: "str" },
+            listInstallationConfig_authorization: { value: "" },
+            listInstallationConfig_authorizationType: { value: "str" },
+            listInstallationConfig_installedAppId: { value: "" },
+            listInstallationConfig_installedAppIdType: { value: "str" },
+            listInstallationConfig_configurationStatus: { value: "" },
+            listInstallationConfig_configurationStatusType: { value: "str" },
+            getInstallationConfig_authorization: { value: "" },
+            getInstallationConfig_authorizationType: { value: "str" },
+            getInstallationConfig_installedAppId: { value: "" },
+            getInstallationConfig_installedAppIdType: { value: "str" },
+            getInstallationConfig_configurationId: { value: "" },
+            getInstallationConfig_configurationIdType: { value: "str" },
+            listSubscriptions_installedAppId: { value: "" },
+            listSubscriptions_installedAppIdType: { value: "str" },
+            listSubscriptions_authorization: { value: "" },
+            listSubscriptions_authorizationType: { value: "str" },
+            saveSubscription_request: { value: "" },
+            saveSubscription_requestType: { value: "str" },
+            saveSubscription_installedAppId: { value: "" },
+            saveSubscription_installedAppIdType: { value: "str" },
+            saveSubscription_authorization: { value: "" },
+            saveSubscription_authorizationType: { value: "str" },
+            deleteAllSubscriptions_deviceId: { value: "" },
+            deleteAllSubscriptions_deviceIdType: { value: "str" },
+            deleteAllSubscriptions_installedAppId: { value: "" },
+            deleteAllSubscriptions_installedAppIdType: { value: "str" },
+            deleteAllSubscriptions_authorization: { value: "" },
+            deleteAllSubscriptions_authorizationType: { value: "str" },
+            getSubscription_installedAppId: { value: "" },
+            getSubscription_installedAppIdType: { value: "str" },
+            getSubscription_subscriptionId: { value: "" },
+            getSubscription_subscriptionIdType: { value: "str" },
+            getSubscription_authorization: { value: "" },
+            getSubscription_authorizationType: { value: "str" },
+            deleteSubscription_installedAppId: { value: "" },
+            deleteSubscription_installedAppIdType: { value: "str" },
+            deleteSubscription_subscriptionId: { value: "" },
+            deleteSubscription_subscriptionIdType: { value: "str" },
+            deleteSubscription_authorization: { value: "" },
+            deleteSubscription_authorizationType: { value: "str" },
+            getSchedules_installedAppId: { value: "" },
+            getSchedules_installedAppIdType: { value: "str" },
+            getSchedules_authorization: { value: "" },
+            getSchedules_authorizationType: { value: "str" },
+            createSchedule_request: { value: "" },
+            createSchedule_requestType: { value: "str" },
+            createSchedule_installedAppId: { value: "" },
+            createSchedule_installedAppIdType: { value: "str" },
+            createSchedule_authorization: { value: "" },
+            createSchedule_authorizationType: { value: "str" },
+            deleteSchedules_installedAppId: { value: "" },
+            deleteSchedules_installedAppIdType: { value: "str" },
+            deleteSchedules_authorization: { value: "" },
+            deleteSchedules_authorizationType: { value: "str" },
+            getSchedule_installedAppId: { value: "" },
+            getSchedule_installedAppIdType: { value: "str" },
+            getSchedule_scheduleName: { value: "" },
+            getSchedule_scheduleNameType: { value: "str" },
+            getSchedule_authorization: { value: "" },
+            getSchedule_authorizationType: { value: "str" },
+            deleteSchedule_installedAppId: { value: "" },
+            deleteSchedule_installedAppIdType: { value: "str" },
+            deleteSchedule_scheduleName: { value: "" },
+            deleteSchedule_scheduleNameType: { value: "str" },
+            deleteSchedule_authorization: { value: "" },
+            deleteSchedule_authorizationType: { value: "str" },
+            createApp_authorization: { value: "" },
+            createApp_authorizationType: { value: "str" },
+            createApp_createOrUpdateAppRequest: { value: "" },
+            createApp_createOrUpdateAppRequestType: { value: "str" },
+            listApps_authorization: { value: "" },
+            listApps_authorizationType: { value: "str" },
+            listApps_appType: { value: "" },
+            listApps_appTypeType: { value: "str" },
+            getApp_authorization: { value: "" },
+            getApp_authorizationType: { value: "str" },
+            getApp_appNameOrId: { value: "" },
+            getApp_appNameOrIdType: { value: "str" },
+            updateApp_authorization: { value: "" },
+            updateApp_authorizationType: { value: "str" },
+            updateApp_appNameOrId: { value: "" },
+            updateApp_appNameOrIdType: { value: "str" },
+            updateApp_createOrUpdateAppRequest: { value: "" },
+            updateApp_createOrUpdateAppRequestType: { value: "str" },
+            deleteApp_authorization: { value: "" },
+            deleteApp_authorizationType: { value: "str" },
+            deleteApp_appNameOrId: { value: "" },
+            deleteApp_appNameOrIdType: { value: "str" },
+            getAppSettings_authorization: { value: "" },
+            getAppSettings_authorizationType: { value: "str" },
+            getAppSettings_appNameOrId: { value: "" },
+            getAppSettings_appNameOrIdType: { value: "str" },
+            updateAppSettings_authorization: { value: "" },
+            updateAppSettings_authorizationType: { value: "str" },
+            updateAppSettings_appNameOrId: { value: "" },
+            updateAppSettings_appNameOrIdType: { value: "str" },
+            updateAppSettings_updateAppSettingsRequest: { value: "" },
+            updateAppSettings_updateAppSettingsRequestType: { value: "str" },
+            getAppOauth_authorization: { value: "" },
+            getAppOauth_authorizationType: { value: "str" },
+            getAppOauth_appNameOrId: { value: "" },
+            getAppOauth_appNameOrIdType: { value: "str" },
+            updateAppOauth_authorization: { value: "" },
+            updateAppOauth_authorizationType: { value: "str" },
+            updateAppOauth_appNameOrId: { value: "" },
+            updateAppOauth_appNameOrIdType: { value: "str" },
+            updateAppOauth_updateAppOAuthRequest: { value: "" },
+            updateAppOauth_updateAppOAuthRequestType: { value: "str" },
+            generateAppOauth_authorization: { value: "" },
+            generateAppOauth_authorizationType: { value: "str" },
+            generateAppOauth_appNameOrId: { value: "" },
+            generateAppOauth_appNameOrIdType: { value: "str" },
+            generateAppOauth_generateAppOAuthRequest: { value: "" },
+            generateAppOauth_generateAppOAuthRequestType: { value: "str" },
+            listScenes_max: { value: "" },
+            listScenes_maxType: { value: "str" },
+            listScenes_offset: { value: "" },
+            listScenes_offsetType: { value: "str" },
+            listScenes_authorization: { value: "" },
+            listScenes_authorizationType: { value: "str" },
+            listScenes_locationId: { value: "" },
+            listScenes_locationIdType: { value: "str" },
+            executeScene_authorization: { value: "" },
+            executeScene_authorizationType: { value: "str" },
+            executeScene_locationId: { value: "" },
+            executeScene_locationIdType: { value: "str" },
+            executeScene_sceneId: { value: "" },
+            executeScene_sceneIdType: { value: "str" },
+            name: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'icon.png',
+        label: function () {
+            return this.name || "smarthings-api";
+        },
+        oneditprepare: function () {
+            var selectedMethod = $('#node-input-method option:selected');
+            if (!selectedMethod.val()) {
+                var methods = $('#node-input-method').children();
+                var firstMethod = methods.first();
+                $('#node-input-method').val(firstMethod.val());
+            }
+
+            var showParameters = function () {
+
+                $("#node-input-getDevices_capability").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDevices_capabilityType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDevices_capability").hide();
+
+                $("#node-input-getDevices_locationId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDevices_locationIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDevices_locationId").hide();
+
+                $("#node-input-getDevices_deviceId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDevices_deviceIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDevices_deviceId").hide();
+
+                $("#node-input-getDevices_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDevices_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDevices_authorization").hide();
+
+                $("#node-input-installDevice_installationRequest").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-installDevice_installationRequestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#installDevice_installationRequest").hide();
+
+                $("#node-input-installDevice_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-installDevice_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#installDevice_authorization").hide();
+
+                $("#node-input-getDevice_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDevice_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDevice_authorization").hide();
+
+                $("#node-input-getDevice_deviceId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDevice_deviceIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDevice_deviceId").hide();
+
+                $("#node-input-deleteDevice_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteDevice_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteDevice_authorization").hide();
+
+                $("#node-input-deleteDevice_deviceId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteDevice_deviceIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteDevice_deviceId").hide();
+
+                $("#node-input-updateDevice_updateDeviceRequest").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateDevice_updateDeviceRequestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateDevice_updateDeviceRequest").hide();
+
+                $("#node-input-updateDevice_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateDevice_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateDevice_authorization").hide();
+
+                $("#node-input-updateDevice_deviceId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateDevice_deviceIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateDevice_deviceId").hide();
+
+                $("#node-input-executeDeviceCommands_executeCapabilityCommand").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-executeDeviceCommands_executeCapabilityCommandType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#executeDeviceCommands_executeCapabilityCommand").hide();
+
+                $("#node-input-executeDeviceCommands_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-executeDeviceCommands_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#executeDeviceCommands_authorization").hide();
+
+                $("#node-input-executeDeviceCommands_deviceId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-executeDeviceCommands_deviceIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#executeDeviceCommands_deviceId").hide();
+
+                $("#node-input-createDeviceEvents_deviceEventRequest").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-createDeviceEvents_deviceEventRequestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#createDeviceEvents_deviceEventRequest").hide();
+
+                $("#node-input-createDeviceEvents_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-createDeviceEvents_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#createDeviceEvents_authorization").hide();
+
+                $("#node-input-createDeviceEvents_deviceId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-createDeviceEvents_deviceIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#createDeviceEvents_deviceId").hide();
+
+                $("#node-input-getDeviceStatus_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDeviceStatus_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDeviceStatus_authorization").hide();
+
+                $("#node-input-getDeviceStatus_deviceId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDeviceStatus_deviceIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDeviceStatus_deviceId").hide();
+
+                $("#node-input-getDeviceComponentStatus_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDeviceComponentStatus_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDeviceComponentStatus_authorization").hide();
+
+                $("#node-input-getDeviceComponentStatus_deviceId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDeviceComponentStatus_deviceIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDeviceComponentStatus_deviceId").hide();
+
+                $("#node-input-getDeviceComponentStatus_componentId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDeviceComponentStatus_componentIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDeviceComponentStatus_componentId").hide();
+
+                $("#node-input-getDeviceStatusByCapability_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDeviceStatusByCapability_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDeviceStatusByCapability_authorization").hide();
+
+                $("#node-input-getDeviceStatusByCapability_deviceId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDeviceStatusByCapability_deviceIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDeviceStatusByCapability_deviceId").hide();
+
+                $("#node-input-getDeviceStatusByCapability_componentId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDeviceStatusByCapability_componentIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDeviceStatusByCapability_componentId").hide();
+
+                $("#node-input-getDeviceStatusByCapability_capabilityId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDeviceStatusByCapability_capabilityIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDeviceStatusByCapability_capabilityId").hide();
+
+                $("#node-input-createDeviceProfile_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-createDeviceProfile_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#createDeviceProfile_authorization").hide();
+
+                $("#node-input-createDeviceProfile_request").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-createDeviceProfile_requestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#createDeviceProfile_request").hide();
+
+                $("#node-input-listDeviceProfiles_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-listDeviceProfiles_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#listDeviceProfiles_authorization").hide();
+
+                $("#node-input-getDeviceProfile_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDeviceProfile_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDeviceProfile_authorization").hide();
+
+                $("#node-input-getDeviceProfile_deviceProfileId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getDeviceProfile_deviceProfileIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getDeviceProfile_deviceProfileId").hide();
+
+                $("#node-input-deleteDeviceProfile_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteDeviceProfile_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteDeviceProfile_authorization").hide();
+
+                $("#node-input-deleteDeviceProfile_deviceProfileId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteDeviceProfile_deviceProfileIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteDeviceProfile_deviceProfileId").hide();
+
+                $("#node-input-listLocations_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-listLocations_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#listLocations_authorization").hide();
+
+                $("#node-input-createLocation_createLocationRequest").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-createLocation_createLocationRequestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#createLocation_createLocationRequest").hide();
+
+                $("#node-input-createLocation_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-createLocation_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#createLocation_authorization").hide();
+
+                $("#node-input-getLocation_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getLocation_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getLocation_authorization").hide();
+
+                $("#node-input-getLocation_locationId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getLocation_locationIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getLocation_locationId").hide();
+
+                $("#node-input-updateLocation_updateLocationRequest").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateLocation_updateLocationRequestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateLocation_updateLocationRequest").hide();
+
+                $("#node-input-updateLocation_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateLocation_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateLocation_authorization").hide();
+
+                $("#node-input-updateLocation_locationId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateLocation_locationIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateLocation_locationId").hide();
+
+                $("#node-input-deleteLocation_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteLocation_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteLocation_authorization").hide();
+
+                $("#node-input-deleteLocation_locationId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteLocation_locationIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteLocation_locationId").hide();
+
+                $("#node-input-listInstallations_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-listInstallations_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#listInstallations_authorization").hide();
+
+                $("#node-input-listInstallations_locationId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-listInstallations_locationIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#listInstallations_locationId").hide();
+
+
+                $("#listInstallations_installedAppStatus").hide();
+
+                $("#node-input-getInstallation_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getInstallation_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getInstallation_authorization").hide();
+
+                $("#node-input-getInstallation_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getInstallation_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getInstallation_installedAppId").hide();
+
+                $("#node-input-deleteInstallation_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteInstallation_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteInstallation_authorization").hide();
+
+                $("#node-input-deleteInstallation_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteInstallation_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteInstallation_installedAppId").hide();
+
+                $("#node-input-deleteInstallation_locationId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteInstallation_locationIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteInstallation_locationId").hide();
+
+                $("#node-input-listInstallationConfig_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-listInstallationConfig_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#listInstallationConfig_authorization").hide();
+
+                $("#node-input-listInstallationConfig_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-listInstallationConfig_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#listInstallationConfig_installedAppId").hide();
+
+
+                $("#listInstallationConfig_configurationStatus").hide();
+
+                $("#node-input-getInstallationConfig_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getInstallationConfig_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getInstallationConfig_authorization").hide();
+
+                $("#node-input-getInstallationConfig_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getInstallationConfig_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getInstallationConfig_installedAppId").hide();
+
+                $("#node-input-getInstallationConfig_configurationId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getInstallationConfig_configurationIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getInstallationConfig_configurationId").hide();
+
+                $("#node-input-listSubscriptions_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-listSubscriptions_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#listSubscriptions_installedAppId").hide();
+
+                $("#node-input-listSubscriptions_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-listSubscriptions_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#listSubscriptions_authorization").hide();
+
+                $("#node-input-saveSubscription_request").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-saveSubscription_requestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#saveSubscription_request").hide();
+
+                $("#node-input-saveSubscription_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-saveSubscription_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#saveSubscription_installedAppId").hide();
+
+                $("#node-input-saveSubscription_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-saveSubscription_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#saveSubscription_authorization").hide();
+
+                $("#node-input-deleteAllSubscriptions_deviceId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteAllSubscriptions_deviceIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteAllSubscriptions_deviceId").hide();
+
+                $("#node-input-deleteAllSubscriptions_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteAllSubscriptions_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteAllSubscriptions_installedAppId").hide();
+
+                $("#node-input-deleteAllSubscriptions_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteAllSubscriptions_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteAllSubscriptions_authorization").hide();
+
+                $("#node-input-getSubscription_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getSubscription_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getSubscription_installedAppId").hide();
+
+                $("#node-input-getSubscription_subscriptionId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getSubscription_subscriptionIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getSubscription_subscriptionId").hide();
+
+                $("#node-input-getSubscription_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getSubscription_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getSubscription_authorization").hide();
+
+                $("#node-input-deleteSubscription_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteSubscription_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteSubscription_installedAppId").hide();
+
+                $("#node-input-deleteSubscription_subscriptionId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteSubscription_subscriptionIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteSubscription_subscriptionId").hide();
+
+                $("#node-input-deleteSubscription_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteSubscription_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteSubscription_authorization").hide();
+
+                $("#node-input-getSchedules_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getSchedules_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getSchedules_installedAppId").hide();
+
+                $("#node-input-getSchedules_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getSchedules_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getSchedules_authorization").hide();
+
+                $("#node-input-createSchedule_request").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-createSchedule_requestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#createSchedule_request").hide();
+
+                $("#node-input-createSchedule_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-createSchedule_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#createSchedule_installedAppId").hide();
+
+                $("#node-input-createSchedule_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-createSchedule_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#createSchedule_authorization").hide();
+
+                $("#node-input-deleteSchedules_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteSchedules_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteSchedules_installedAppId").hide();
+
+                $("#node-input-deleteSchedules_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteSchedules_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteSchedules_authorization").hide();
+
+                $("#node-input-getSchedule_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getSchedule_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getSchedule_installedAppId").hide();
+
+                $("#node-input-getSchedule_scheduleName").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getSchedule_scheduleNameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getSchedule_scheduleName").hide();
+
+                $("#node-input-getSchedule_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getSchedule_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getSchedule_authorization").hide();
+
+                $("#node-input-deleteSchedule_installedAppId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteSchedule_installedAppIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteSchedule_installedAppId").hide();
+
+                $("#node-input-deleteSchedule_scheduleName").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteSchedule_scheduleNameType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteSchedule_scheduleName").hide();
+
+                $("#node-input-deleteSchedule_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteSchedule_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteSchedule_authorization").hide();
+
+                $("#node-input-createApp_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-createApp_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#createApp_authorization").hide();
+
+                $("#node-input-createApp_createOrUpdateAppRequest").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-createApp_createOrUpdateAppRequestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#createApp_createOrUpdateAppRequest").hide();
+
+                $("#node-input-listApps_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-listApps_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#listApps_authorization").hide();
+
+
+                $("#listApps_appType").hide();
+
+                $("#node-input-getApp_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getApp_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getApp_authorization").hide();
+
+                $("#node-input-getApp_appNameOrId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getApp_appNameOrIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getApp_appNameOrId").hide();
+
+                $("#node-input-updateApp_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateApp_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateApp_authorization").hide();
+
+                $("#node-input-updateApp_appNameOrId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateApp_appNameOrIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateApp_appNameOrId").hide();
+
+                $("#node-input-updateApp_createOrUpdateAppRequest").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateApp_createOrUpdateAppRequestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateApp_createOrUpdateAppRequest").hide();
+
+                $("#node-input-deleteApp_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteApp_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteApp_authorization").hide();
+
+                $("#node-input-deleteApp_appNameOrId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-deleteApp_appNameOrIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#deleteApp_appNameOrId").hide();
+
+                $("#node-input-getAppSettings_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getAppSettings_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getAppSettings_authorization").hide();
+
+                $("#node-input-getAppSettings_appNameOrId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getAppSettings_appNameOrIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getAppSettings_appNameOrId").hide();
+
+                $("#node-input-updateAppSettings_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateAppSettings_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateAppSettings_authorization").hide();
+
+                $("#node-input-updateAppSettings_appNameOrId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateAppSettings_appNameOrIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateAppSettings_appNameOrId").hide();
+
+                $("#node-input-updateAppSettings_updateAppSettingsRequest").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateAppSettings_updateAppSettingsRequestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateAppSettings_updateAppSettingsRequest").hide();
+
+                $("#node-input-getAppOauth_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getAppOauth_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getAppOauth_authorization").hide();
+
+                $("#node-input-getAppOauth_appNameOrId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-getAppOauth_appNameOrIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#getAppOauth_appNameOrId").hide();
+
+                $("#node-input-updateAppOauth_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateAppOauth_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateAppOauth_authorization").hide();
+
+                $("#node-input-updateAppOauth_appNameOrId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateAppOauth_appNameOrIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateAppOauth_appNameOrId").hide();
+
+                $("#node-input-updateAppOauth_updateAppOAuthRequest").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-updateAppOauth_updateAppOAuthRequestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#updateAppOauth_updateAppOAuthRequest").hide();
+
+                $("#node-input-generateAppOauth_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-generateAppOauth_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#generateAppOauth_authorization").hide();
+
+                $("#node-input-generateAppOauth_appNameOrId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-generateAppOauth_appNameOrIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#generateAppOauth_appNameOrId").hide();
+
+                $("#node-input-generateAppOauth_generateAppOAuthRequest").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-generateAppOauth_generateAppOAuthRequestType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#generateAppOauth_generateAppOAuthRequest").hide();
+
+                $("#node-input-listScenes_max").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-listScenes_maxType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#listScenes_max").hide();
+
+                $("#node-input-listScenes_offset").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-listScenes_offsetType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#listScenes_offset").hide();
+
+                $("#node-input-listScenes_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-listScenes_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#listScenes_authorization").hide();
+
+                $("#node-input-listScenes_locationId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-listScenes_locationIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#listScenes_locationId").hide();
+
+                $("#node-input-executeScene_authorization").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-executeScene_authorizationType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#executeScene_authorization").hide();
+
+                $("#node-input-executeScene_locationId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-executeScene_locationIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#executeScene_locationId").hide();
+
+                $("#node-input-executeScene_sceneId").typedInput({
+                    default: 'str',
+                    typeField: $("#node-input-executeScene_sceneIdType"),
+                    types: ['str', 'msg']
+                });
+
+                $("#executeScene_sceneId").hide();
+
+                $("#optional-parameters").hide();
+                $("#optional-parameters-label").hide();
+                if ($("#node-input-method").val() === 'getDevices') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+                    
+                }
+                if ($("#node-input-method").val() === 'installDevice') {
+
+                }
+                if ($("#node-input-method").val() === 'getDevice') {
+
+                }
+                if ($("#node-input-method").val() === 'deleteDevice') {
+
+                }
+                if ($("#node-input-method").val() === 'updateDevice') {
+
+                }
+                if ($("#node-input-method").val() === 'executeDeviceCommands') {
+
+                }
+                if ($("#node-input-method").val() === 'createDeviceEvents') {
+
+                }
+                if ($("#node-input-method").val() === 'getDeviceStatus') {
+
+                }
+                if ($("#node-input-method").val() === 'getDeviceComponentStatus') {
+
+                }
+                if ($("#node-input-method").val() === 'getDeviceStatusByCapability') {
+
+                }
+                if ($("#node-input-method").val() === 'createDeviceProfile') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+                    
+                }
+                if ($("#node-input-method").val() === 'listDeviceProfiles') {
+
+                }
+                if ($("#node-input-method").val() === 'getDeviceProfile') {
+
+                }
+                if ($("#node-input-method").val() === 'deleteDeviceProfile') {
+
+                }
+                if ($("#node-input-method").val() === 'listLocations') {
+
+                }
+                if ($("#node-input-method").val() === 'createLocation') {
+
+                }
+                if ($("#node-input-method").val() === 'getLocation') {
+
+                }
+                if ($("#node-input-method").val() === 'updateLocation') {
+
+                }
+                if ($("#node-input-method").val() === 'deleteLocation') {
+
+                }
+                if ($("#node-input-method").val() === 'listInstallations') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+                    
+                }
+                if ($("#node-input-method").val() === 'getInstallation') {
+
+                }
+                if ($("#node-input-method").val() === 'deleteInstallation') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+                    
+                }
+                if ($("#node-input-method").val() === 'listInstallationConfig') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+                    
+                }
+                if ($("#node-input-method").val() === 'getInstallationConfig') {
+
+                }
+                if ($("#node-input-method").val() === 'listSubscriptions') {
+
+                }
+                if ($("#node-input-method").val() === 'saveSubscription') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+                    
+                }
+                if ($("#node-input-method").val() === 'deleteAllSubscriptions') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+                    
+                }
+                if ($("#node-input-method").val() === 'getSubscription') {
+
+                }
+                if ($("#node-input-method").val() === 'deleteSubscription') {
+
+                }
+                if ($("#node-input-method").val() === 'getSchedules') {
+
+                }
+                if ($("#node-input-method").val() === 'createSchedule') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+                    
+                }
+                if ($("#node-input-method").val() === 'deleteSchedules') {
+
+                }
+                if ($("#node-input-method").val() === 'getSchedule') {
+
+                }
+                if ($("#node-input-method").val() === 'deleteSchedule') {
+
+                }
+                if ($("#node-input-method").val() === 'createApp') {
+
+                }
+                if ($("#node-input-method").val() === 'listApps') {
+
+                }
+                if ($("#node-input-method").val() === 'getApp') {
+
+                }
+                if ($("#node-input-method").val() === 'updateApp') {
+
+                }
+                if ($("#node-input-method").val() === 'deleteApp') {
+
+                }
+                if ($("#node-input-method").val() === 'getAppSettings') {
+
+                }
+                if ($("#node-input-method").val() === 'updateAppSettings') {
+
+                }
+                if ($("#node-input-method").val() === 'getAppOauth') {
+
+                }
+                if ($("#node-input-method").val() === 'updateAppOauth') {
+
+                }
+                if ($("#node-input-method").val() === 'generateAppOauth') {
+
+                }
+                if ($("#node-input-method").val() === 'listScenes') {
+
+                    $("#optional-parameters").show();
+                    $("#optional-parameters-label").show();
+                    
+                }
+                if ($("#node-input-method").val() === 'executeScene') {
+
+                }
+
+                if ($("#optional-parameters").prop('checked')) {
+                    if ($("#node-input-method").val() === 'getDevices') {
+
+                        $("#getDevices_capability").show();
+                        
+                        $("#getDevices_locationId").show();
+                        
+                        $("#getDevices_deviceId").show();
+                        
+                        $("#getDevices_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'installDevice') {
+
+                        $("#installDevice_installationRequest").show();
+                        
+                        $("#installDevice_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getDevice') {
+
+                        $("#getDevice_authorization").show();
+                        
+                        $("#getDevice_deviceId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteDevice') {
+
+                        $("#deleteDevice_authorization").show();
+                        
+                        $("#deleteDevice_deviceId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'updateDevice') {
+
+                        $("#updateDevice_updateDeviceRequest").show();
+                        
+                        $("#updateDevice_authorization").show();
+                        
+                        $("#updateDevice_deviceId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'executeDeviceCommands') {
+
+                        $("#executeDeviceCommands_executeCapabilityCommand").show();
+                        
+                        $("#executeDeviceCommands_authorization").show();
+                        
+                        $("#executeDeviceCommands_deviceId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'createDeviceEvents') {
+
+                        $("#createDeviceEvents_deviceEventRequest").show();
+                        
+                        $("#createDeviceEvents_authorization").show();
+                        
+                        $("#createDeviceEvents_deviceId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getDeviceStatus') {
+
+                        $("#getDeviceStatus_authorization").show();
+                        
+                        $("#getDeviceStatus_deviceId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getDeviceComponentStatus') {
+
+                        $("#getDeviceComponentStatus_authorization").show();
+                        
+                        $("#getDeviceComponentStatus_deviceId").show();
+                        
+                        $("#getDeviceComponentStatus_componentId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getDeviceStatusByCapability') {
+
+                        $("#getDeviceStatusByCapability_authorization").show();
+                        
+                        $("#getDeviceStatusByCapability_deviceId").show();
+                        
+                        $("#getDeviceStatusByCapability_componentId").show();
+                        
+                        $("#getDeviceStatusByCapability_capabilityId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'createDeviceProfile') {
+
+                        $("#createDeviceProfile_authorization").show();
+                        
+                        $("#createDeviceProfile_request").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listDeviceProfiles') {
+
+                        $("#listDeviceProfiles_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getDeviceProfile') {
+
+                        $("#getDeviceProfile_authorization").show();
+                        
+                        $("#getDeviceProfile_deviceProfileId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteDeviceProfile') {
+
+                        $("#deleteDeviceProfile_authorization").show();
+                        
+                        $("#deleteDeviceProfile_deviceProfileId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listLocations') {
+
+                        $("#listLocations_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'createLocation') {
+
+                        $("#createLocation_createLocationRequest").show();
+                        
+                        $("#createLocation_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getLocation') {
+
+                        $("#getLocation_authorization").show();
+                        
+                        $("#getLocation_locationId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'updateLocation') {
+
+                        $("#updateLocation_updateLocationRequest").show();
+                        
+                        $("#updateLocation_authorization").show();
+                        
+                        $("#updateLocation_locationId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteLocation') {
+
+                        $("#deleteLocation_authorization").show();
+                        
+                        $("#deleteLocation_locationId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listInstallations') {
+
+                        $("#listInstallations_authorization").show();
+                        
+                        $("#listInstallations_locationId").show();
+                        
+                        $("#listInstallations_installedAppStatus").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getInstallation') {
+
+                        $("#getInstallation_authorization").show();
+                        
+                        $("#getInstallation_installedAppId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteInstallation') {
+
+                        $("#deleteInstallation_authorization").show();
+                        
+                        $("#deleteInstallation_installedAppId").show();
+                        
+                        $("#deleteInstallation_locationId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listInstallationConfig') {
+
+                        $("#listInstallationConfig_authorization").show();
+                        
+                        $("#listInstallationConfig_installedAppId").show();
+                        
+                        $("#listInstallationConfig_configurationStatus").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getInstallationConfig') {
+
+                        $("#getInstallationConfig_authorization").show();
+                        
+                        $("#getInstallationConfig_installedAppId").show();
+                        
+                        $("#getInstallationConfig_configurationId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listSubscriptions') {
+
+                        $("#listSubscriptions_installedAppId").show();
+                        
+                        $("#listSubscriptions_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'saveSubscription') {
+
+                        $("#saveSubscription_request").show();
+                        
+                        $("#saveSubscription_installedAppId").show();
+                        
+                        $("#saveSubscription_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteAllSubscriptions') {
+
+                        $("#deleteAllSubscriptions_deviceId").show();
+                        
+                        $("#deleteAllSubscriptions_installedAppId").show();
+                        
+                        $("#deleteAllSubscriptions_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getSubscription') {
+
+                        $("#getSubscription_installedAppId").show();
+                        
+                        $("#getSubscription_subscriptionId").show();
+                        
+                        $("#getSubscription_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteSubscription') {
+
+                        $("#deleteSubscription_installedAppId").show();
+                        
+                        $("#deleteSubscription_subscriptionId").show();
+                        
+                        $("#deleteSubscription_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getSchedules') {
+
+                        $("#getSchedules_installedAppId").show();
+                        
+                        $("#getSchedules_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'createSchedule') {
+
+                        $("#createSchedule_request").show();
+                        
+                        $("#createSchedule_installedAppId").show();
+                        
+                        $("#createSchedule_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteSchedules') {
+
+                        $("#deleteSchedules_installedAppId").show();
+                        
+                        $("#deleteSchedules_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getSchedule') {
+
+                        $("#getSchedule_installedAppId").show();
+                        
+                        $("#getSchedule_scheduleName").show();
+                        
+                        $("#getSchedule_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteSchedule') {
+
+                        $("#deleteSchedule_installedAppId").show();
+                        
+                        $("#deleteSchedule_scheduleName").show();
+                        
+                        $("#deleteSchedule_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'createApp') {
+
+                        $("#createApp_authorization").show();
+                        
+                        $("#createApp_createOrUpdateAppRequest").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listApps') {
+
+                        $("#listApps_authorization").show();
+                        
+                        $("#listApps_appType").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getApp') {
+
+                        $("#getApp_authorization").show();
+                        
+                        $("#getApp_appNameOrId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'updateApp') {
+
+                        $("#updateApp_authorization").show();
+                        
+                        $("#updateApp_appNameOrId").show();
+                        
+                        $("#updateApp_createOrUpdateAppRequest").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteApp') {
+
+                        $("#deleteApp_authorization").show();
+                        
+                        $("#deleteApp_appNameOrId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getAppSettings') {
+
+                        $("#getAppSettings_authorization").show();
+                        
+                        $("#getAppSettings_appNameOrId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'updateAppSettings') {
+
+                        $("#updateAppSettings_authorization").show();
+                        
+                        $("#updateAppSettings_appNameOrId").show();
+                        
+                        $("#updateAppSettings_updateAppSettingsRequest").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getAppOauth') {
+
+                        $("#getAppOauth_authorization").show();
+                        
+                        $("#getAppOauth_appNameOrId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'updateAppOauth') {
+
+                        $("#updateAppOauth_authorization").show();
+                        
+                        $("#updateAppOauth_appNameOrId").show();
+                        
+                        $("#updateAppOauth_updateAppOAuthRequest").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'generateAppOauth') {
+
+                        $("#generateAppOauth_authorization").show();
+                        
+                        $("#generateAppOauth_appNameOrId").show();
+                        
+                        $("#generateAppOauth_generateAppOAuthRequest").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listScenes') {
+
+                        $("#listScenes_max").show();
+                        
+                        $("#listScenes_offset").show();
+                        
+                        $("#listScenes_authorization").show();
+                        
+                        $("#listScenes_locationId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'executeScene') {
+
+                        $("#executeScene_authorization").show();
+                        
+                        $("#executeScene_locationId").show();
+                        
+                        $("#executeScene_sceneId").show();
+                        
+                    }
+                } else {
+                    if ($("#node-input-method").val() === 'getDevices') {
+
+                        $("#getDevices_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'installDevice') {
+
+                        $("#installDevice_installationRequest").show();
+                        
+                        $("#installDevice_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getDevice') {
+
+                        $("#getDevice_authorization").show();
+                        
+                        $("#getDevice_deviceId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteDevice') {
+
+                        $("#deleteDevice_authorization").show();
+                        
+                        $("#deleteDevice_deviceId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'updateDevice') {
+
+                        $("#updateDevice_updateDeviceRequest").show();
+                        
+                        $("#updateDevice_authorization").show();
+                        
+                        $("#updateDevice_deviceId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'executeDeviceCommands') {
+
+                        $("#executeDeviceCommands_executeCapabilityCommand").show();
+                        
+                        $("#executeDeviceCommands_authorization").show();
+                        
+                        $("#executeDeviceCommands_deviceId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'createDeviceEvents') {
+
+                        $("#createDeviceEvents_deviceEventRequest").show();
+                        
+                        $("#createDeviceEvents_authorization").show();
+                        
+                        $("#createDeviceEvents_deviceId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getDeviceStatus') {
+
+                        $("#getDeviceStatus_authorization").show();
+                        
+                        $("#getDeviceStatus_deviceId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getDeviceComponentStatus') {
+
+                        $("#getDeviceComponentStatus_authorization").show();
+                        
+                        $("#getDeviceComponentStatus_deviceId").show();
+                        
+                        $("#getDeviceComponentStatus_componentId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getDeviceStatusByCapability') {
+
+                        $("#getDeviceStatusByCapability_authorization").show();
+                        
+                        $("#getDeviceStatusByCapability_deviceId").show();
+                        
+                        $("#getDeviceStatusByCapability_componentId").show();
+                        
+                        $("#getDeviceStatusByCapability_capabilityId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'createDeviceProfile') {
+
+                        $("#createDeviceProfile_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listDeviceProfiles') {
+
+                        $("#listDeviceProfiles_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getDeviceProfile') {
+
+                        $("#getDeviceProfile_authorization").show();
+                        
+                        $("#getDeviceProfile_deviceProfileId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteDeviceProfile') {
+
+                        $("#deleteDeviceProfile_authorization").show();
+                        
+                        $("#deleteDeviceProfile_deviceProfileId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listLocations') {
+
+                        $("#listLocations_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'createLocation') {
+
+                        $("#createLocation_createLocationRequest").show();
+                        
+                        $("#createLocation_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getLocation') {
+
+                        $("#getLocation_authorization").show();
+                        
+                        $("#getLocation_locationId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'updateLocation') {
+
+                        $("#updateLocation_updateLocationRequest").show();
+                        
+                        $("#updateLocation_authorization").show();
+                        
+                        $("#updateLocation_locationId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteLocation') {
+
+                        $("#deleteLocation_authorization").show();
+                        
+                        $("#deleteLocation_locationId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listInstallations') {
+
+                        $("#listInstallations_authorization").show();
+                        
+                        $("#listInstallations_locationId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getInstallation') {
+
+                        $("#getInstallation_authorization").show();
+                        
+                        $("#getInstallation_installedAppId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteInstallation') {
+
+                        $("#deleteInstallation_authorization").show();
+                        
+                        $("#deleteInstallation_installedAppId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listInstallationConfig') {
+
+                        $("#listInstallationConfig_authorization").show();
+                        
+                        $("#listInstallationConfig_installedAppId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getInstallationConfig') {
+
+                        $("#getInstallationConfig_authorization").show();
+                        
+                        $("#getInstallationConfig_installedAppId").show();
+                        
+                        $("#getInstallationConfig_configurationId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listSubscriptions') {
+
+                        $("#listSubscriptions_installedAppId").show();
+                        
+                        $("#listSubscriptions_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'saveSubscription') {
+
+                        $("#saveSubscription_installedAppId").show();
+                        
+                        $("#saveSubscription_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteAllSubscriptions') {
+
+                        $("#deleteAllSubscriptions_installedAppId").show();
+                        
+                        $("#deleteAllSubscriptions_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getSubscription') {
+
+                        $("#getSubscription_installedAppId").show();
+                        
+                        $("#getSubscription_subscriptionId").show();
+                        
+                        $("#getSubscription_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteSubscription') {
+
+                        $("#deleteSubscription_installedAppId").show();
+                        
+                        $("#deleteSubscription_subscriptionId").show();
+                        
+                        $("#deleteSubscription_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getSchedules') {
+
+                        $("#getSchedules_installedAppId").show();
+                        
+                        $("#getSchedules_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'createSchedule') {
+
+                        $("#createSchedule_installedAppId").show();
+                        
+                        $("#createSchedule_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteSchedules') {
+
+                        $("#deleteSchedules_installedAppId").show();
+                        
+                        $("#deleteSchedules_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getSchedule') {
+
+                        $("#getSchedule_installedAppId").show();
+                        
+                        $("#getSchedule_scheduleName").show();
+                        
+                        $("#getSchedule_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteSchedule') {
+
+                        $("#deleteSchedule_installedAppId").show();
+                        
+                        $("#deleteSchedule_scheduleName").show();
+                        
+                        $("#deleteSchedule_authorization").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'createApp') {
+
+                        $("#createApp_authorization").show();
+                        
+                        $("#createApp_createOrUpdateAppRequest").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listApps') {
+
+                        $("#listApps_authorization").show();
+                        
+                        $("#listApps_appType").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getApp') {
+
+                        $("#getApp_authorization").show();
+                        
+                        $("#getApp_appNameOrId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'updateApp') {
+
+                        $("#updateApp_authorization").show();
+                        
+                        $("#updateApp_appNameOrId").show();
+                        
+                        $("#updateApp_createOrUpdateAppRequest").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'deleteApp') {
+
+                        $("#deleteApp_authorization").show();
+                        
+                        $("#deleteApp_appNameOrId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getAppSettings') {
+
+                        $("#getAppSettings_authorization").show();
+                        
+                        $("#getAppSettings_appNameOrId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'updateAppSettings') {
+
+                        $("#updateAppSettings_authorization").show();
+                        
+                        $("#updateAppSettings_appNameOrId").show();
+                        
+                        $("#updateAppSettings_updateAppSettingsRequest").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'getAppOauth') {
+
+                        $("#getAppOauth_authorization").show();
+                        
+                        $("#getAppOauth_appNameOrId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'updateAppOauth') {
+
+                        $("#updateAppOauth_authorization").show();
+                        
+                        $("#updateAppOauth_appNameOrId").show();
+                        
+                        $("#updateAppOauth_updateAppOAuthRequest").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'generateAppOauth') {
+
+                        $("#generateAppOauth_authorization").show();
+                        
+                        $("#generateAppOauth_appNameOrId").show();
+                        
+                        $("#generateAppOauth_generateAppOAuthRequest").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'listScenes') {
+
+                        $("#listScenes_authorization").show();
+                        
+                        $("#listScenes_locationId").show();
+                        
+                    }
+                    if ($("#node-input-method").val() === 'executeScene') {
+
+                        $("#executeScene_authorization").show();
+                        
+                        $("#executeScene_locationId").show();
+                        
+                        $("#executeScene_sceneId").show();
+                        
+                    }
+                }
+            };
+
+            $("#node-input-method").change(function () {
+                showParameters();
+            });
+
+            $("#optional-parameters").change(function () {
+                showParameters();
+            });
+
+            var selected_listInstallations_installedAppStatus = $('#node-input-listInstallations_installedAppStatus option:selected');
+            if (!selected_listInstallations_installedAppStatus.val()) {
+                var children_listInstallations_installedAppStatus = $('#node-input-listInstallations_installedAppStatus').children();
+                var first_listInstallations_installedAppStatus = children_listInstallations_installedAppStatus.first();
+                $('#node-input-listInstallations_installedAppStatus').val(first_listInstallations_installedAppStatus.val());
+            }
+            var selected_listInstallationConfig_configurationStatus = $('#node-input-listInstallationConfig_configurationStatus option:selected');
+            if (!selected_listInstallationConfig_configurationStatus.val()) {
+                var children_listInstallationConfig_configurationStatus = $('#node-input-listInstallationConfig_configurationStatus').children();
+                var first_listInstallationConfig_configurationStatus = children_listInstallationConfig_configurationStatus.first();
+                $('#node-input-listInstallationConfig_configurationStatus').val(first_listInstallationConfig_configurationStatus.val());
+            }
+            var selected_listApps_appType = $('#node-input-listApps_appType option:selected');
+            if (!selected_listApps_appType.val()) {
+                var children_listApps_appType = $('#node-input-listApps_appType').children();
+                var first_listApps_appType = children_listApps_appType.first();
+                $('#node-input-listApps_appType').val(first_listApps_appType.val());
+            }
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="smarthings-api">
+    <div class="form-row">
+        <label for="node-input-service"><i class="fa fa-cloud"></i> <span data-i18n="SmartthingsApi.label.service"></span></label>
+        <input type="text" id="node-input-service">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-method"><i class="icon-tasks"></i> <span data-i18n="SmartthingsApi.label.method"></span></label>
+        <select id="node-input-method">
+            <option value="getDevices" data-i18n="SmartthingsApi.parameters.getDevices"></option>
+            <option value="installDevice" data-i18n="SmartthingsApi.parameters.installDevice"></option>
+            <option value="getDevice" data-i18n="SmartthingsApi.parameters.getDevice"></option>
+            <option value="deleteDevice" data-i18n="SmartthingsApi.parameters.deleteDevice"></option>
+            <option value="updateDevice" data-i18n="SmartthingsApi.parameters.updateDevice"></option>
+            <option value="executeDeviceCommands" data-i18n="SmartthingsApi.parameters.executeDeviceCommands"></option>
+            <option value="createDeviceEvents" data-i18n="SmartthingsApi.parameters.createDeviceEvents"></option>
+            <option value="getDeviceStatus" data-i18n="SmartthingsApi.parameters.getDeviceStatus"></option>
+            <option value="getDeviceComponentStatus" data-i18n="SmartthingsApi.parameters.getDeviceComponentStatus"></option>
+            <option value="getDeviceStatusByCapability" data-i18n="SmartthingsApi.parameters.getDeviceStatusByCapability"></option>
+            <option value="createDeviceProfile" data-i18n="SmartthingsApi.parameters.createDeviceProfile"></option>
+            <option value="listDeviceProfiles" data-i18n="SmartthingsApi.parameters.listDeviceProfiles"></option>
+            <option value="getDeviceProfile" data-i18n="SmartthingsApi.parameters.getDeviceProfile"></option>
+            <option value="deleteDeviceProfile" data-i18n="SmartthingsApi.parameters.deleteDeviceProfile"></option>
+            <option value="listLocations" data-i18n="SmartthingsApi.parameters.listLocations"></option>
+            <option value="createLocation" data-i18n="SmartthingsApi.parameters.createLocation"></option>
+            <option value="getLocation" data-i18n="SmartthingsApi.parameters.getLocation"></option>
+            <option value="updateLocation" data-i18n="SmartthingsApi.parameters.updateLocation"></option>
+            <option value="deleteLocation" data-i18n="SmartthingsApi.parameters.deleteLocation"></option>
+            <option value="listInstallations" data-i18n="SmartthingsApi.parameters.listInstallations"></option>
+            <option value="getInstallation" data-i18n="SmartthingsApi.parameters.getInstallation"></option>
+            <option value="deleteInstallation" data-i18n="SmartthingsApi.parameters.deleteInstallation"></option>
+            <option value="listInstallationConfig" data-i18n="SmartthingsApi.parameters.listInstallationConfig"></option>
+            <option value="getInstallationConfig" data-i18n="SmartthingsApi.parameters.getInstallationConfig"></option>
+            <option value="listSubscriptions" data-i18n="SmartthingsApi.parameters.listSubscriptions"></option>
+            <option value="saveSubscription" data-i18n="SmartthingsApi.parameters.saveSubscription"></option>
+            <option value="deleteAllSubscriptions" data-i18n="SmartthingsApi.parameters.deleteAllSubscriptions"></option>
+            <option value="getSubscription" data-i18n="SmartthingsApi.parameters.getSubscription"></option>
+            <option value="deleteSubscription" data-i18n="SmartthingsApi.parameters.deleteSubscription"></option>
+            <option value="getSchedules" data-i18n="SmartthingsApi.parameters.getSchedules"></option>
+            <option value="createSchedule" data-i18n="SmartthingsApi.parameters.createSchedule"></option>
+            <option value="deleteSchedules" data-i18n="SmartthingsApi.parameters.deleteSchedules"></option>
+            <option value="getSchedule" data-i18n="SmartthingsApi.parameters.getSchedule"></option>
+            <option value="deleteSchedule" data-i18n="SmartthingsApi.parameters.deleteSchedule"></option>
+            <option value="createApp" data-i18n="SmartthingsApi.parameters.createApp"></option>
+            <option value="listApps" data-i18n="SmartthingsApi.parameters.listApps"></option>
+            <option value="getApp" data-i18n="SmartthingsApi.parameters.getApp"></option>
+            <option value="updateApp" data-i18n="SmartthingsApi.parameters.updateApp"></option>
+            <option value="deleteApp" data-i18n="SmartthingsApi.parameters.deleteApp"></option>
+            <option value="getAppSettings" data-i18n="SmartthingsApi.parameters.getAppSettings"></option>
+            <option value="updateAppSettings" data-i18n="SmartthingsApi.parameters.updateAppSettings"></option>
+            <option value="getAppOauth" data-i18n="SmartthingsApi.parameters.getAppOauth"></option>
+            <option value="updateAppOauth" data-i18n="SmartthingsApi.parameters.updateAppOauth"></option>
+            <option value="generateAppOauth" data-i18n="SmartthingsApi.parameters.generateAppOauth"></option>
+            <option value="listScenes" data-i18n="SmartthingsApi.parameters.listScenes"></option>
+            <option value="executeScene" data-i18n="SmartthingsApi.parameters.executeScene"></option>
+        </select>
+        &nbsp;
+        <input type="checkbox" id="optional-parameters" style="margin-left: 10px; vertical-align: text-bottom; width: auto;">
+        <label for="optional-parameters" id="optional-parameters-label" style="width: auto;"> <span data-i18n="SmartthingsApi.parameters.optionalParameters"></span></label>
+    </div>
+
+    <div class="form-row" id="getDevices_capability">
+        <label for="node-input-getDevices_capability"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.capability"></span></label>
+
+        <input type="text" id="node-input-getDevices_capability" placeholder="The device capabilities to filter the results by.
+The capabilities are treated as an "and" so all capabilities must be present.
+" style="width:70%">
+        <input type="hidden" id="node-input-getDevices_capabilityType">
+    </div>
+
+    <div class="form-row" id="getDevices_locationId">
+        <label for="node-input-getDevices_locationId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.locationId"></span></label>
+
+        <input type="text" id="node-input-getDevices_locationId" placeholder="The device locations to filter the results by.
+" style="width:70%">
+        <input type="hidden" id="node-input-getDevices_locationIdType">
+    </div>
+
+    <div class="form-row" id="getDevices_deviceId">
+        <label for="node-input-getDevices_deviceId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.deviceId"></span></label>
+
+        <input type="text" id="node-input-getDevices_deviceId" placeholder="The device ids to filter the results by.
+" style="width:70%">
+        <input type="hidden" id="node-input-getDevices_deviceIdType">
+    </div>
+
+    <div class="form-row" id="getDevices_authorization">
+        <label for="node-input-getDevices_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getDevices_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getDevices_authorizationType">
+    </div>
+
+    <div class="form-row" id="installDevice_installationRequest">
+        <label for="node-input-installDevice_installationRequest"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installationRequest"></span></label>
+
+        <input type="text" id="node-input-installDevice_installationRequest" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-installDevice_installationRequestType">
+    </div>
+
+    <div class="form-row" id="installDevice_authorization">
+        <label for="node-input-installDevice_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-installDevice_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-installDevice_authorizationType">
+    </div>
+
+    <div class="form-row" id="getDevice_authorization">
+        <label for="node-input-getDevice_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getDevice_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getDevice_authorizationType">
+    </div>
+
+    <div class="form-row" id="getDevice_deviceId">
+        <label for="node-input-getDevice_deviceId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.deviceId"></span></label>
+
+        <input type="text" id="node-input-getDevice_deviceId" placeholder="the device ID" style="width:70%">
+        <input type="hidden" id="node-input-getDevice_deviceIdType">
+    </div>
+
+    <div class="form-row" id="deleteDevice_authorization">
+        <label for="node-input-deleteDevice_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-deleteDevice_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-deleteDevice_authorizationType">
+    </div>
+
+    <div class="form-row" id="deleteDevice_deviceId">
+        <label for="node-input-deleteDevice_deviceId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.deviceId"></span></label>
+
+        <input type="text" id="node-input-deleteDevice_deviceId" placeholder="the device ID" style="width:70%">
+        <input type="hidden" id="node-input-deleteDevice_deviceIdType">
+    </div>
+
+    <div class="form-row" id="updateDevice_updateDeviceRequest">
+        <label for="node-input-updateDevice_updateDeviceRequest"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.updateDeviceRequest"></span></label>
+
+        <input type="text" id="node-input-updateDevice_updateDeviceRequest" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-updateDevice_updateDeviceRequestType">
+    </div>
+
+    <div class="form-row" id="updateDevice_authorization">
+        <label for="node-input-updateDevice_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-updateDevice_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-updateDevice_authorizationType">
+    </div>
+
+    <div class="form-row" id="updateDevice_deviceId">
+        <label for="node-input-updateDevice_deviceId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.deviceId"></span></label>
+
+        <input type="text" id="node-input-updateDevice_deviceId" placeholder="the device ID" style="width:70%">
+        <input type="hidden" id="node-input-updateDevice_deviceIdType">
+    </div>
+
+    <div class="form-row" id="executeDeviceCommands_executeCapabilityCommand">
+        <label for="node-input-executeDeviceCommands_executeCapabilityCommand"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.executeCapabilityCommand"></span></label>
+
+        <input type="text" id="node-input-executeDeviceCommands_executeCapabilityCommand" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-executeDeviceCommands_executeCapabilityCommandType">
+    </div>
+
+    <div class="form-row" id="executeDeviceCommands_authorization">
+        <label for="node-input-executeDeviceCommands_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-executeDeviceCommands_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-executeDeviceCommands_authorizationType">
+    </div>
+
+    <div class="form-row" id="executeDeviceCommands_deviceId">
+        <label for="node-input-executeDeviceCommands_deviceId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.deviceId"></span></label>
+
+        <input type="text" id="node-input-executeDeviceCommands_deviceId" placeholder="the device ID" style="width:70%">
+        <input type="hidden" id="node-input-executeDeviceCommands_deviceIdType">
+    </div>
+
+    <div class="form-row" id="createDeviceEvents_deviceEventRequest">
+        <label for="node-input-createDeviceEvents_deviceEventRequest"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.deviceEventRequest"></span></label>
+
+        <input type="text" id="node-input-createDeviceEvents_deviceEventRequest" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-createDeviceEvents_deviceEventRequestType">
+    </div>
+
+    <div class="form-row" id="createDeviceEvents_authorization">
+        <label for="node-input-createDeviceEvents_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-createDeviceEvents_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-createDeviceEvents_authorizationType">
+    </div>
+
+    <div class="form-row" id="createDeviceEvents_deviceId">
+        <label for="node-input-createDeviceEvents_deviceId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.deviceId"></span></label>
+
+        <input type="text" id="node-input-createDeviceEvents_deviceId" placeholder="the device ID" style="width:70%">
+        <input type="hidden" id="node-input-createDeviceEvents_deviceIdType">
+    </div>
+
+    <div class="form-row" id="getDeviceStatus_authorization">
+        <label for="node-input-getDeviceStatus_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getDeviceStatus_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getDeviceStatus_authorizationType">
+    </div>
+
+    <div class="form-row" id="getDeviceStatus_deviceId">
+        <label for="node-input-getDeviceStatus_deviceId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.deviceId"></span></label>
+
+        <input type="text" id="node-input-getDeviceStatus_deviceId" placeholder="the device ID" style="width:70%">
+        <input type="hidden" id="node-input-getDeviceStatus_deviceIdType">
+    </div>
+
+    <div class="form-row" id="getDeviceComponentStatus_authorization">
+        <label for="node-input-getDeviceComponentStatus_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getDeviceComponentStatus_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getDeviceComponentStatus_authorizationType">
+    </div>
+
+    <div class="form-row" id="getDeviceComponentStatus_deviceId">
+        <label for="node-input-getDeviceComponentStatus_deviceId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.deviceId"></span></label>
+
+        <input type="text" id="node-input-getDeviceComponentStatus_deviceId" placeholder="the device ID" style="width:70%">
+        <input type="hidden" id="node-input-getDeviceComponentStatus_deviceIdType">
+    </div>
+
+    <div class="form-row" id="getDeviceComponentStatus_componentId">
+        <label for="node-input-getDeviceComponentStatus_componentId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.componentId"></span></label>
+
+        <input type="text" id="node-input-getDeviceComponentStatus_componentId" placeholder="The name of the component." style="width:70%">
+        <input type="hidden" id="node-input-getDeviceComponentStatus_componentIdType">
+    </div>
+
+    <div class="form-row" id="getDeviceStatusByCapability_authorization">
+        <label for="node-input-getDeviceStatusByCapability_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getDeviceStatusByCapability_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getDeviceStatusByCapability_authorizationType">
+    </div>
+
+    <div class="form-row" id="getDeviceStatusByCapability_deviceId">
+        <label for="node-input-getDeviceStatusByCapability_deviceId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.deviceId"></span></label>
+
+        <input type="text" id="node-input-getDeviceStatusByCapability_deviceId" placeholder="the device ID" style="width:70%">
+        <input type="hidden" id="node-input-getDeviceStatusByCapability_deviceIdType">
+    </div>
+
+    <div class="form-row" id="getDeviceStatusByCapability_componentId">
+        <label for="node-input-getDeviceStatusByCapability_componentId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.componentId"></span></label>
+
+        <input type="text" id="node-input-getDeviceStatusByCapability_componentId" placeholder="The name of the component." style="width:70%">
+        <input type="hidden" id="node-input-getDeviceStatusByCapability_componentIdType">
+    </div>
+
+    <div class="form-row" id="getDeviceStatusByCapability_capabilityId">
+        <label for="node-input-getDeviceStatusByCapability_capabilityId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.capabilityId"></span></label>
+
+        <input type="text" id="node-input-getDeviceStatusByCapability_capabilityId" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-getDeviceStatusByCapability_capabilityIdType">
+    </div>
+
+    <div class="form-row" id="createDeviceProfile_authorization">
+        <label for="node-input-createDeviceProfile_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-createDeviceProfile_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-createDeviceProfile_authorizationType">
+    </div>
+
+    <div class="form-row" id="createDeviceProfile_request">
+        <label for="node-input-createDeviceProfile_request"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.request"></span></label>
+
+        <input type="text" id="node-input-createDeviceProfile_request" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-createDeviceProfile_requestType">
+    </div>
+
+    <div class="form-row" id="listDeviceProfiles_authorization">
+        <label for="node-input-listDeviceProfiles_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-listDeviceProfiles_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-listDeviceProfiles_authorizationType">
+    </div>
+
+    <div class="form-row" id="getDeviceProfile_authorization">
+        <label for="node-input-getDeviceProfile_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getDeviceProfile_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getDeviceProfile_authorizationType">
+    </div>
+
+    <div class="form-row" id="getDeviceProfile_deviceProfileId">
+        <label for="node-input-getDeviceProfile_deviceProfileId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.deviceProfileId"></span></label>
+
+        <input type="text" id="node-input-getDeviceProfile_deviceProfileId" placeholder="the device profile ID" style="width:70%">
+        <input type="hidden" id="node-input-getDeviceProfile_deviceProfileIdType">
+    </div>
+
+    <div class="form-row" id="deleteDeviceProfile_authorization">
+        <label for="node-input-deleteDeviceProfile_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-deleteDeviceProfile_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-deleteDeviceProfile_authorizationType">
+    </div>
+
+    <div class="form-row" id="deleteDeviceProfile_deviceProfileId">
+        <label for="node-input-deleteDeviceProfile_deviceProfileId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.deviceProfileId"></span></label>
+
+        <input type="text" id="node-input-deleteDeviceProfile_deviceProfileId" placeholder="the device profile ID" style="width:70%">
+        <input type="hidden" id="node-input-deleteDeviceProfile_deviceProfileIdType">
+    </div>
+
+    <div class="form-row" id="listLocations_authorization">
+        <label for="node-input-listLocations_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-listLocations_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-listLocations_authorizationType">
+    </div>
+
+    <div class="form-row" id="createLocation_createLocationRequest">
+        <label for="node-input-createLocation_createLocationRequest"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.createLocationRequest"></span></label>
+
+        <input type="text" id="node-input-createLocation_createLocationRequest" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-createLocation_createLocationRequestType">
+    </div>
+
+    <div class="form-row" id="createLocation_authorization">
+        <label for="node-input-createLocation_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-createLocation_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-createLocation_authorizationType">
+    </div>
+
+    <div class="form-row" id="getLocation_authorization">
+        <label for="node-input-getLocation_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getLocation_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getLocation_authorizationType">
+    </div>
+
+    <div class="form-row" id="getLocation_locationId">
+        <label for="node-input-getLocation_locationId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.locationId"></span></label>
+
+        <input type="text" id="node-input-getLocation_locationId" placeholder="The ID of the location." style="width:70%">
+        <input type="hidden" id="node-input-getLocation_locationIdType">
+    </div>
+
+    <div class="form-row" id="updateLocation_updateLocationRequest">
+        <label for="node-input-updateLocation_updateLocationRequest"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.updateLocationRequest"></span></label>
+
+        <input type="text" id="node-input-updateLocation_updateLocationRequest" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-updateLocation_updateLocationRequestType">
+    </div>
+
+    <div class="form-row" id="updateLocation_authorization">
+        <label for="node-input-updateLocation_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-updateLocation_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-updateLocation_authorizationType">
+    </div>
+
+    <div class="form-row" id="updateLocation_locationId">
+        <label for="node-input-updateLocation_locationId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.locationId"></span></label>
+
+        <input type="text" id="node-input-updateLocation_locationId" placeholder="The ID of the location." style="width:70%">
+        <input type="hidden" id="node-input-updateLocation_locationIdType">
+    </div>
+
+    <div class="form-row" id="deleteLocation_authorization">
+        <label for="node-input-deleteLocation_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-deleteLocation_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-deleteLocation_authorizationType">
+    </div>
+
+    <div class="form-row" id="deleteLocation_locationId">
+        <label for="node-input-deleteLocation_locationId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.locationId"></span></label>
+
+        <input type="text" id="node-input-deleteLocation_locationId" placeholder="The ID of the location." style="width:70%">
+        <input type="hidden" id="node-input-deleteLocation_locationIdType">
+    </div>
+
+    <div class="form-row" id="listInstallations_authorization">
+        <label for="node-input-listInstallations_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-listInstallations_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-listInstallations_authorizationType">
+    </div>
+
+    <div class="form-row" id="listInstallations_locationId">
+        <label for="node-input-listInstallations_locationId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.locationId"></span></label>
+
+        <input type="text" id="node-input-listInstallations_locationId" placeholder="The ID of the location that both the installed smart app and source
+are associated with." style="width:70%">
+        <input type="hidden" id="node-input-listInstallations_locationIdType">
+    </div>
+
+    <div class="form-row" id="listInstallations_installedAppStatus">
+        <label for="node-input-listInstallations_installedAppStatus"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppStatus"></span></label>
+        <select id="node-input-listInstallations_installedAppStatus">
+            <option value="PENDING">PENDING</option>
+            <option value="AUTHORIZED">AUTHORIZED</option>
+            <option value="REVOKED">REVOKED</option>
+            <option value="DISABLED">DISABLED</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="getInstallation_authorization">
+        <label for="node-input-getInstallation_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getInstallation_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getInstallation_authorizationType">
+    </div>
+
+    <div class="form-row" id="getInstallation_installedAppId">
+        <label for="node-input-getInstallation_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-getInstallation_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-getInstallation_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="deleteInstallation_authorization">
+        <label for="node-input-deleteInstallation_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-deleteInstallation_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-deleteInstallation_authorizationType">
+    </div>
+
+    <div class="form-row" id="deleteInstallation_installedAppId">
+        <label for="node-input-deleteInstallation_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-deleteInstallation_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-deleteInstallation_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="deleteInstallation_locationId">
+        <label for="node-input-deleteInstallation_locationId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.locationId"></span></label>
+
+        <input type="text" id="node-input-deleteInstallation_locationId" placeholder="The ID of the location that both the installed smart app and source
+are associated with." style="width:70%">
+        <input type="hidden" id="node-input-deleteInstallation_locationIdType">
+    </div>
+
+    <div class="form-row" id="listInstallationConfig_authorization">
+        <label for="node-input-listInstallationConfig_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-listInstallationConfig_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-listInstallationConfig_authorizationType">
+    </div>
+
+    <div class="form-row" id="listInstallationConfig_installedAppId">
+        <label for="node-input-listInstallationConfig_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-listInstallationConfig_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-listInstallationConfig_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="listInstallationConfig_configurationStatus">
+        <label for="node-input-listInstallationConfig_configurationStatus"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.configurationStatus"></span></label>
+        <select id="node-input-listInstallationConfig_configurationStatus">
+            <option value="STAGED">STAGED</option>
+            <option value="DONE">DONE</option>
+            <option value="AUTHORIZED">AUTHORIZED</option>
+            <option value="REVOKED">REVOKED</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="getInstallationConfig_authorization">
+        <label for="node-input-getInstallationConfig_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getInstallationConfig_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getInstallationConfig_authorizationType">
+    </div>
+
+    <div class="form-row" id="getInstallationConfig_installedAppId">
+        <label for="node-input-getInstallationConfig_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-getInstallationConfig_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-getInstallationConfig_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="getInstallationConfig_configurationId">
+        <label for="node-input-getInstallationConfig_configurationId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.configurationId"></span></label>
+
+        <input type="text" id="node-input-getInstallationConfig_configurationId" placeholder="The ID of the install configuration." style="width:70%">
+        <input type="hidden" id="node-input-getInstallationConfig_configurationIdType">
+    </div>
+
+    <div class="form-row" id="listSubscriptions_installedAppId">
+        <label for="node-input-listSubscriptions_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-listSubscriptions_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-listSubscriptions_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="listSubscriptions_authorization">
+        <label for="node-input-listSubscriptions_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-listSubscriptions_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-listSubscriptions_authorizationType">
+    </div>
+
+    <div class="form-row" id="saveSubscription_request">
+        <label for="node-input-saveSubscription_request"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.request"></span></label>
+
+        <input type="text" id="node-input-saveSubscription_request" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-saveSubscription_requestType">
+    </div>
+
+    <div class="form-row" id="saveSubscription_installedAppId">
+        <label for="node-input-saveSubscription_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-saveSubscription_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-saveSubscription_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="saveSubscription_authorization">
+        <label for="node-input-saveSubscription_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-saveSubscription_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-saveSubscription_authorizationType">
+    </div>
+
+    <div class="form-row" id="deleteAllSubscriptions_deviceId">
+        <label for="node-input-deleteAllSubscriptions_deviceId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.deviceId"></span></label>
+
+        <input type="text" id="node-input-deleteAllSubscriptions_deviceId" placeholder="Limit deletion to subscriptions for a particular device." style="width:70%">
+        <input type="hidden" id="node-input-deleteAllSubscriptions_deviceIdType">
+    </div>
+
+    <div class="form-row" id="deleteAllSubscriptions_installedAppId">
+        <label for="node-input-deleteAllSubscriptions_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-deleteAllSubscriptions_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-deleteAllSubscriptions_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="deleteAllSubscriptions_authorization">
+        <label for="node-input-deleteAllSubscriptions_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-deleteAllSubscriptions_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-deleteAllSubscriptions_authorizationType">
+    </div>
+
+    <div class="form-row" id="getSubscription_installedAppId">
+        <label for="node-input-getSubscription_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-getSubscription_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-getSubscription_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="getSubscription_subscriptionId">
+        <label for="node-input-getSubscription_subscriptionId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.subscriptionId"></span></label>
+
+        <input type="text" id="node-input-getSubscription_subscriptionId" placeholder="The ID of the subscription" style="width:70%">
+        <input type="hidden" id="node-input-getSubscription_subscriptionIdType">
+    </div>
+
+    <div class="form-row" id="getSubscription_authorization">
+        <label for="node-input-getSubscription_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getSubscription_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getSubscription_authorizationType">
+    </div>
+
+    <div class="form-row" id="deleteSubscription_installedAppId">
+        <label for="node-input-deleteSubscription_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-deleteSubscription_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-deleteSubscription_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="deleteSubscription_subscriptionId">
+        <label for="node-input-deleteSubscription_subscriptionId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.subscriptionId"></span></label>
+
+        <input type="text" id="node-input-deleteSubscription_subscriptionId" placeholder="The ID of the subscription" style="width:70%">
+        <input type="hidden" id="node-input-deleteSubscription_subscriptionIdType">
+    </div>
+
+    <div class="form-row" id="deleteSubscription_authorization">
+        <label for="node-input-deleteSubscription_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-deleteSubscription_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-deleteSubscription_authorizationType">
+    </div>
+
+    <div class="form-row" id="getSchedules_installedAppId">
+        <label for="node-input-getSchedules_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-getSchedules_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-getSchedules_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="getSchedules_authorization">
+        <label for="node-input-getSchedules_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getSchedules_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getSchedules_authorizationType">
+    </div>
+
+    <div class="form-row" id="createSchedule_request">
+        <label for="node-input-createSchedule_request"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.request"></span></label>
+
+        <input type="text" id="node-input-createSchedule_request" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-createSchedule_requestType">
+    </div>
+
+    <div class="form-row" id="createSchedule_installedAppId">
+        <label for="node-input-createSchedule_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-createSchedule_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-createSchedule_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="createSchedule_authorization">
+        <label for="node-input-createSchedule_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-createSchedule_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-createSchedule_authorizationType">
+    </div>
+
+    <div class="form-row" id="deleteSchedules_installedAppId">
+        <label for="node-input-deleteSchedules_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-deleteSchedules_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-deleteSchedules_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="deleteSchedules_authorization">
+        <label for="node-input-deleteSchedules_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-deleteSchedules_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-deleteSchedules_authorizationType">
+    </div>
+
+    <div class="form-row" id="getSchedule_installedAppId">
+        <label for="node-input-getSchedule_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-getSchedule_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-getSchedule_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="getSchedule_scheduleName">
+        <label for="node-input-getSchedule_scheduleName"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.scheduleName"></span></label>
+
+        <input type="text" id="node-input-getSchedule_scheduleName" placeholder="The name of the schedule" style="width:70%">
+        <input type="hidden" id="node-input-getSchedule_scheduleNameType">
+    </div>
+
+    <div class="form-row" id="getSchedule_authorization">
+        <label for="node-input-getSchedule_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getSchedule_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getSchedule_authorizationType">
+    </div>
+
+    <div class="form-row" id="deleteSchedule_installedAppId">
+        <label for="node-input-deleteSchedule_installedAppId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.installedAppId"></span></label>
+
+        <input type="text" id="node-input-deleteSchedule_installedAppId" placeholder="The ID of the installed application." style="width:70%">
+        <input type="hidden" id="node-input-deleteSchedule_installedAppIdType">
+    </div>
+
+    <div class="form-row" id="deleteSchedule_scheduleName">
+        <label for="node-input-deleteSchedule_scheduleName"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.scheduleName"></span></label>
+
+        <input type="text" id="node-input-deleteSchedule_scheduleName" placeholder="The name of the schedule" style="width:70%">
+        <input type="hidden" id="node-input-deleteSchedule_scheduleNameType">
+    </div>
+
+    <div class="form-row" id="deleteSchedule_authorization">
+        <label for="node-input-deleteSchedule_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-deleteSchedule_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-deleteSchedule_authorizationType">
+    </div>
+
+    <div class="form-row" id="createApp_authorization">
+        <label for="node-input-createApp_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-createApp_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-createApp_authorizationType">
+    </div>
+
+    <div class="form-row" id="createApp_createOrUpdateAppRequest">
+        <label for="node-input-createApp_createOrUpdateAppRequest"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.createOrUpdateAppRequest"></span></label>
+
+        <input type="text" id="node-input-createApp_createOrUpdateAppRequest" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-createApp_createOrUpdateAppRequestType">
+    </div>
+
+    <div class="form-row" id="listApps_authorization">
+        <label for="node-input-listApps_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-listApps_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-listApps_authorizationType">
+    </div>
+
+    <div class="form-row" id="listApps_appType">
+        <label for="node-input-listApps_appType"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.appType"></span></label>
+        <select id="node-input-listApps_appType">
+            <option value="LAMBDA_SMART_APP">LAMBDA_SMART_APP</option>
+            <option value="WEBHOOK_SMART_APP">WEBHOOK_SMART_APP</option>
+        </select>
+
+    </div>
+
+    <div class="form-row" id="getApp_authorization">
+        <label for="node-input-getApp_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getApp_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getApp_authorizationType">
+    </div>
+
+    <div class="form-row" id="getApp_appNameOrId">
+        <label for="node-input-getApp_appNameOrId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.appNameOrId"></span></label>
+
+        <input type="text" id="node-input-getApp_appNameOrId" placeholder="The appName or appId field of an app." style="width:70%">
+        <input type="hidden" id="node-input-getApp_appNameOrIdType">
+    </div>
+
+    <div class="form-row" id="updateApp_authorization">
+        <label for="node-input-updateApp_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-updateApp_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-updateApp_authorizationType">
+    </div>
+
+    <div class="form-row" id="updateApp_appNameOrId">
+        <label for="node-input-updateApp_appNameOrId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.appNameOrId"></span></label>
+
+        <input type="text" id="node-input-updateApp_appNameOrId" placeholder="The appName or appId field of an app." style="width:70%">
+        <input type="hidden" id="node-input-updateApp_appNameOrIdType">
+    </div>
+
+    <div class="form-row" id="updateApp_createOrUpdateAppRequest">
+        <label for="node-input-updateApp_createOrUpdateAppRequest"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.createOrUpdateAppRequest"></span></label>
+
+        <input type="text" id="node-input-updateApp_createOrUpdateAppRequest" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-updateApp_createOrUpdateAppRequestType">
+    </div>
+
+    <div class="form-row" id="deleteApp_authorization">
+        <label for="node-input-deleteApp_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-deleteApp_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-deleteApp_authorizationType">
+    </div>
+
+    <div class="form-row" id="deleteApp_appNameOrId">
+        <label for="node-input-deleteApp_appNameOrId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.appNameOrId"></span></label>
+
+        <input type="text" id="node-input-deleteApp_appNameOrId" placeholder="The appName or appId field of an app." style="width:70%">
+        <input type="hidden" id="node-input-deleteApp_appNameOrIdType">
+    </div>
+
+    <div class="form-row" id="getAppSettings_authorization">
+        <label for="node-input-getAppSettings_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getAppSettings_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getAppSettings_authorizationType">
+    </div>
+
+    <div class="form-row" id="getAppSettings_appNameOrId">
+        <label for="node-input-getAppSettings_appNameOrId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.appNameOrId"></span></label>
+
+        <input type="text" id="node-input-getAppSettings_appNameOrId" placeholder="The appName or appId field of an app." style="width:70%">
+        <input type="hidden" id="node-input-getAppSettings_appNameOrIdType">
+    </div>
+
+    <div class="form-row" id="updateAppSettings_authorization">
+        <label for="node-input-updateAppSettings_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-updateAppSettings_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-updateAppSettings_authorizationType">
+    </div>
+
+    <div class="form-row" id="updateAppSettings_appNameOrId">
+        <label for="node-input-updateAppSettings_appNameOrId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.appNameOrId"></span></label>
+
+        <input type="text" id="node-input-updateAppSettings_appNameOrId" placeholder="The appName or appId  field of an app." style="width:70%">
+        <input type="hidden" id="node-input-updateAppSettings_appNameOrIdType">
+    </div>
+
+    <div class="form-row" id="updateAppSettings_updateAppSettingsRequest">
+        <label for="node-input-updateAppSettings_updateAppSettingsRequest"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.updateAppSettingsRequest"></span></label>
+
+        <input type="text" id="node-input-updateAppSettings_updateAppSettingsRequest" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-updateAppSettings_updateAppSettingsRequestType">
+    </div>
+
+    <div class="form-row" id="getAppOauth_authorization">
+        <label for="node-input-getAppOauth_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-getAppOauth_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-getAppOauth_authorizationType">
+    </div>
+
+    <div class="form-row" id="getAppOauth_appNameOrId">
+        <label for="node-input-getAppOauth_appNameOrId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.appNameOrId"></span></label>
+
+        <input type="text" id="node-input-getAppOauth_appNameOrId" placeholder="The appName or appId field of an app." style="width:70%">
+        <input type="hidden" id="node-input-getAppOauth_appNameOrIdType">
+    </div>
+
+    <div class="form-row" id="updateAppOauth_authorization">
+        <label for="node-input-updateAppOauth_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-updateAppOauth_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-updateAppOauth_authorizationType">
+    </div>
+
+    <div class="form-row" id="updateAppOauth_appNameOrId">
+        <label for="node-input-updateAppOauth_appNameOrId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.appNameOrId"></span></label>
+
+        <input type="text" id="node-input-updateAppOauth_appNameOrId" placeholder="The appName or appId field of an app." style="width:70%">
+        <input type="hidden" id="node-input-updateAppOauth_appNameOrIdType">
+    </div>
+
+    <div class="form-row" id="updateAppOauth_updateAppOAuthRequest">
+        <label for="node-input-updateAppOauth_updateAppOAuthRequest"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.updateAppOAuthRequest"></span></label>
+
+        <input type="text" id="node-input-updateAppOauth_updateAppOAuthRequest" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-updateAppOauth_updateAppOAuthRequestType">
+    </div>
+
+    <div class="form-row" id="generateAppOauth_authorization">
+        <label for="node-input-generateAppOauth_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-generateAppOauth_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-generateAppOauth_authorizationType">
+    </div>
+
+    <div class="form-row" id="generateAppOauth_appNameOrId">
+        <label for="node-input-generateAppOauth_appNameOrId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.appNameOrId"></span></label>
+
+        <input type="text" id="node-input-generateAppOauth_appNameOrId" placeholder="The appName or appId field of an app." style="width:70%">
+        <input type="hidden" id="node-input-generateAppOauth_appNameOrIdType">
+    </div>
+
+    <div class="form-row" id="generateAppOauth_generateAppOAuthRequest">
+        <label for="node-input-generateAppOauth_generateAppOAuthRequest"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.generateAppOAuthRequest"></span></label>
+
+        <input type="text" id="node-input-generateAppOauth_generateAppOAuthRequest" placeholder="" style="width:70%">
+        <input type="hidden" id="node-input-generateAppOauth_generateAppOAuthRequestType">
+    </div>
+
+    <div class="form-row" id="listScenes_max">
+        <label for="node-input-listScenes_max"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.max"></span></label>
+
+        <input type="text" id="node-input-listScenes_max" placeholder="The max number of items to return" style="width:70%">
+        <input type="hidden" id="node-input-listScenes_maxType">
+    </div>
+
+    <div class="form-row" id="listScenes_offset">
+        <label for="node-input-listScenes_offset"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.offset"></span></label>
+
+        <input type="text" id="node-input-listScenes_offset" placeholder="The index where the list of items should start" style="width:70%">
+        <input type="hidden" id="node-input-listScenes_offsetType">
+    </div>
+
+    <div class="form-row" id="listScenes_authorization">
+        <label for="node-input-listScenes_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-listScenes_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-listScenes_authorizationType">
+    </div>
+
+    <div class="form-row" id="listScenes_locationId">
+        <label for="node-input-listScenes_locationId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.locationId"></span></label>
+
+        <input type="text" id="node-input-listScenes_locationId" placeholder="The ID of the location." style="width:70%">
+        <input type="hidden" id="node-input-listScenes_locationIdType">
+    </div>
+
+    <div class="form-row" id="executeScene_authorization">
+        <label for="node-input-executeScene_authorization"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.authorization"></span></label>
+
+        <input type="text" id="node-input-executeScene_authorization" placeholder="OAuth token" style="width:70%">
+        <input type="hidden" id="node-input-executeScene_authorizationType">
+    </div>
+
+    <div class="form-row" id="executeScene_locationId">
+        <label for="node-input-executeScene_locationId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.locationId"></span></label>
+
+        <input type="text" id="node-input-executeScene_locationId" placeholder="The ID of the location." style="width:70%">
+        <input type="hidden" id="node-input-executeScene_locationIdType">
+    </div>
+
+    <div class="form-row" id="executeScene_sceneId">
+        <label for="node-input-executeScene_sceneId"><i class="fa fa-list"></i> <span data-i18n="SmartthingsApi.parameters.sceneId"></span></label>
+
+        <input type="text" id="node-input-executeScene_sceneId" placeholder="The ID of the Scene." style="width:70%">
+        <input type="hidden" id="node-input-executeScene_sceneIdType">
+    </div>
+
+    <hr/>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="smarthings-api">
+
+    <p># Overview
+
+This is the reference documentation for the SmartThings API.
+
+The SmartThings API supports [REST](https://en.wikipedia.org/wiki/Representational_state_transfer), resources are protected with [OAuth 2.0 Bearer Tokens](https://tools.ietf.org/html/rfc6750#section-2.1), and all responses are sent as [JSON](http://www.json.org/).
+
+# Authentication
+
+All SmartThings resources are protected with [OAuth 2.0 Bearer Tokens](https://tools.ietf.org/html/rfc6750#section-2.1) sent on the request as an `Authorization: Bearer <TOKEN>` header, and operations require specific OAuth scopes that specify the exact permissions authorized by the user.
+
+## Token types
+
+There are two types of tokens: SmartApp tokens, and personal access tokens.
+
+SmartApp tokens are used to communicate between third-party integrations, or SmartApps, and the SmartThings API.
+When a SmartApp is called by the SmartThings platform, it is sent an authorization token that can be used to interact with the SmartThings API.
+
+Personal access tokens are used to interact with the API for non-SmartApp use cases. They can be created and managed on the [personal access tokens page](https://account.smartthings.com/tokens).
+
+## OAuth2 scopes
+
+Operations are protected by specific OAuth scopes that specify the permissions authorized for the particular token.
+
+SmartApp token scopes are derived from the permissions requested by the SmartApp and granted by the end-user during installation.
+Personal access token scopes are associated with the specific permissions authorized when creating them.
+
+Scopes are generally in the form `permission:entity-type:entity-id`.
+
+**An `*` used for the `entity-id` specifies that the permission may be applied to all entities that the token type has access to, or may be replaced with a specific ID.**
+
+For more information about authorization and permissions, please see the [Authorization and permissions guide](https://smartthings.developer.samsung.com/docs/guides/smartapps/auth-and-permissions.html).
+
+<!-- ReDoc-Inject: <security-definitions> -->
+
+# Errors
+
+The SmartThings API uses conventional HTTP response codes to indicate the success or failure of a request.
+In general, a `2XX` response code indicates success, a `4XX` response code indicates an error given the inputs for the request, and a `5XX` response code indicates a failure on the SmartThings platform.
+
+API errors will contain a JSON response body with more information about the error:
+
+```json
+{
+  "requestId": "031fec1a-f19f-470a-a7da-710569082846"
+  "error": {
+    "code": "ConstraintViolationError",
+    "message": "Validation errors occurred while process your request.",
+    "details": [
+      { "code": "PatternError", "target": "latitude", "message": "Invalid format." },
+      { "code": "SizeError", "target": "name", "message": "Too small." },
+      { "code": "SizeError", "target": "description", "message": "Too big." }
+    ]
+  }
+}
+```
+
+## Error Response Body
+
+The error response attributes are:
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| requestId | String | No | A request identifier that can be used to correlate an error to additional logging on the SmartThings servers.
+| error | Error | **Yes** | The Error object, documented below.
+
+## Error Object
+
+The Error object contains the following attributes:
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| code | String | **Yes** | A SmartThings-defined error code that serves as a more specific indicator of the error than the HTTP error code specified in the response. See [SmartThings Error Codes](#section/Errors/SmartThings-Error-Codes) for more information.
+| message | String | **Yes** | A description of the error, intended to aid developers in debugging of error responses.
+| target | String | No | The target of the particular error. For example, it could be the name of the property that caused the error.
+| details | Error[] | No | An array of Error objects that typically represent distinct, related errors that occurred during the request. As an optional attribute, this may be null or an empty array.
+
+## Standard HTTP Error Codes
+
+The following table lists the most common HTTP error response:
+
+| Code | Name | Description |
+| --- | --- | --- |
+| 400 | Bad Request | The client has issued an invalid request. This is commonly used to specify validation errors in a request payload.
+| 401 | Unauthorized | Authorization for the API is required, but the request has not been authenticated.
+| 403 | Forbidden | The request has been authenticated but does not have appropriate permissions, or a requested resource is not found.
+| 404 | Not Found | Specifies the requested path does not exist.
+| 406 | Not Acceptable | The client has requested a MIME type via the Accept header for a value not supported by the server.
+| 422 | Unprocessable Entity | The client has made a valid request, but the server cannot process it. This is often used for APIs for which certain limits have been exceeded.
+| 429 | Too Many Requests | The client has exceeded the number of requests allowed for a given time window.
+| 500 | Internal Server Error | An unexpected error on the SmartThings servers has occurred. These errors should be rare.
+| 501 | Not Implemented | The client request was valid and understood by the server, but the requested feature has yet to be implemented. These errors should be rare.
+
+## SmartThings Error Codes
+
+SmartThings specifies several standard custom error codes.
+These provide more information than the standard HTTP error response codes.
+The following table lists the standard SmartThings error codes and their description:
+
+| Code | Typical HTTP Status Codes | Description |
+| --- | --- | --- |
+| PatternError | 400, 422 | The client has provided input that does not match the expected pattern.
+| ConstraintViolationError | 422 | The client has provided input that has violated one or more constraints.
+| NotNullError | 422 | The client has provided a null input for a field that is required to be non-null.
+| NullError | 422 | The client has provided an input for a field that is required to be null.
+| NotEmptyError | 422 | The client has provided an empty input for a field that is required to be non-empty.
+| SizeError | 400, 422 | The client has provided a value that does not meet size restrictions.
+| Unexpected Error | 500 | A non-recoverable error condition has occurred. Indicates a problem occurred on the SmartThings server that is no fault of the client.
+| UnprocessableEntityError | 422 | The client has sent a malformed request body.
+| TooManyRequestError | 429 | The client issued too many requests too quickly.
+| LimitError | 422 | The client has exceeded certain limits an API enforces.
+| UnsupportedOperationError | 400, 422 | The client has issued a request to a feature that currently isn't supported by the SmartThings platform. These should be rare.
+
+## Custom Error Codes
+
+An API may define its own error codes where appropriate.
+These custom error codes are documented as part of that specific API's documentation.
+
+# API Versions
+
+The SmartThings API supports both path and header-based versioning.
+The following are equivalent:
+
+- https://api.smartthings.com/v1/locations
+- https://api.smartthings.com/locations with header `Accept: application/vnd.smartthings+json;v=1`
+
+Currently, only version 1 is available.
+
+# Paging
+
+Operations that return a list of objects return a paginated response.
+The `_links` object contains the items returned, and links to the next and previous result page, if applicable.
+
+```json
+{
+  "items": [
+    {
+      "locationId": "6b3d1909-1e1c-43ec-adc2-5f941de4fbf9",
+      "name": "Home"
+    },
+    {
+      "locationId": "6b3d1909-1e1c-43ec-adc2-5f94d6g4fbf9",
+      "name": "Work"
+    }
+    ....
+  ],
+  "_links": {
+    "next": {
+      "href": "https://api.smartthings.com/v1/locations?page=3"
+    },
+    "previous": {
+      "href": "https://api.smartthings.com/v1/locations?page=1"
+    }
+  }
+}
+```
+</p>
+    <h2>Methods</h2>
+        <h3>getDevices</h3>
+        <h4>Get a list of devices.</h4>
+        <h3>installDevice</h3>
+        <h4>Install a device. This is only available for SmartApp managed devices.
+The SmartApp that creates the device is responsible for handling commands for the device and
+updating the status of the device by creating events.
+</h4>
+        <h3>getDevice</h3>
+        <h4>Get a device's description.</h4>
+        <h3>deleteDevice</h3>
+        <h4>Delete a device by device id.
+If the token is for a SmartApp that created the device then it implicitly has permission for this api.
+</h4>
+        <h3>updateDevice</h3>
+        <h4>Update the properties of a device.
+If the token is for a SmartApp that created the device then it implicitly has permission for this api.
+</h4>
+        <h3>executeDeviceCommands</h3>
+        <h4>Execute commands on a device.</h4>
+        <h3>createDeviceEvents</h3>
+        <h4>Create events for a device. When a device is managed by a SmartApp then it is responsible for creating events
+to update the attributes of the device in the SmartThings platform.
+The token must be for a SmartApp and it must be the SmartApp that created the Device.
+</h4>
+        <h3>getDeviceStatus</h3>
+        <h4>Get the current status of all of a device's component's attributes.
+The results may be filtered if the requester only has permission to
+view a subset of the device's components or capabilities.
+If the token is for a SmartApp that created the device then it implicitly has permission for this api.
+</h4>
+        <h3>getDeviceComponentStatus</h3>
+        <h4>Get the status of all attributes of a the component.
+The results may be filtered if the requester only has permission to view a subset of the component's capabilities.
+If the token is for a SmartApp that created the device then it implicitly has permission for this api.
+</h4>
+        <h3>getDeviceStatusByCapability</h3>
+        <h4>Get the current status of a device component's capability.
+If the token is for a SmartApp that created the device then it implicitly has permission for this api.
+</h4>
+        <h3>createDeviceProfile</h3>
+        <h4>Create a device profile.</h4>
+        <h3>listDeviceProfiles</h3>
+        <h4>List device profiles.</h4>
+        <h3>getDeviceProfile</h3>
+        <h4>GET a device profile's description.</h4>
+        <h3>deleteDeviceProfile</h3>
+        <h4>Delete a device profile by ID. Admin use only</h4>
+        <h3>listLocations</h3>
+        <h4>List all Locations currently available in a user account.</h4>
+        <h3>createLocation</h3>
+        <h4>Create a Location for a user.  We will try and create the Location geographically close to the country code provided in the request body. If we do not support Location creation in the requested country code, then the API will return a 422 error response with an error code of UnsupportedGeoRegionError.
+</h4>
+        <h3>getLocation</h3>
+        <h4>Get a specific Location from a user's account.</h4>
+        <h3>updateLocation</h3>
+        <h4>All the fields in the request body are optional. Only the specified
+fields will be updated.</h4>
+        <h3>deleteLocation</h3>
+        <h4>Delete a Location from a user's account.</h4>
+        <h3>listInstallations</h3>
+        <h4>List all installed applications within a location.</h4>
+        <h3>getInstallation</h3>
+        <h4>Fetch a single installed application.</h4>
+        <h3>deleteInstallation</h3>
+        <h4>Delete an Installed App.</h4>
+        <h3>listInstallationConfig</h3>
+        <h4>List all configurations potentially filtered by status for an installed
+app.</h4>
+        <h3>getInstallationConfig</h3>
+        <h4>Fetch a detailed install configuration model containing actual
+config entries / values.</h4>
+        <h3>listSubscriptions</h3>
+        <h4>List the subscriptions for the installed app.
+</h4>
+        <h3>saveSubscription</h3>
+        <h4>Create a subscription to a type of event from the specified source.
+Both the source and the installed app must be in the location specified
+and the installed app must have read access to the event being subscribed to.
+
+For installed app principal:
+* installed app id matches the incoming request installed app id
+* if the subscription is a device subscription then there must be a `r:devices:$deviceId` scope
+* if it is a capability subscription then the location must match the installed app location, and there must be a `r:devices:*:$capability` or `r:devices:*` scope
+
+For user token:
+* user must have ability to read the installed app
+* if the subscription is a device subscription then the user must be able to access the device
+* if it is a capability subscription then the location must match the installed apps location
+</h4>
+        <h3>deleteAllSubscriptions</h3>
+        <h4>Delete all subscriptions for the installed app.
+</h4>
+        <h3>getSubscription</h3>
+        <h4>Get a specific subscription for the installed app.
+</h4>
+        <h3>deleteSubscription</h3>
+        <h4>Delete a specific subscription for the installed app.
+</h4>
+        <h3>getSchedules</h3>
+        <h4>List the schedules for the installed app.
+</h4>
+        <h3>createSchedule</h3>
+        <h4>Create a schedule for an installed app. The installed app must be in the location specified and the installed app must have permission to create schedules.
+</h4>
+        <h3>deleteSchedules</h3>
+        <h4>Delete all schedules for the installed app.
+</h4>
+        <h3>getSchedule</h3>
+        <h4>Get a specific schedule for the installed app.
+</h4>
+        <h3>deleteSchedule</h3>
+        <h4>Delete a specific schedule for the installed app.
+</h4>
+        <h3>createApp</h3>
+        <h4>Create an app integration.
+
+A single developer account is allowed to contain a maximum of 500 apps.  Upon hitting that limit a 422 error
+response is returned with an error code of LimitError.
+</h4>
+        <h3>listApps</h3>
+        <h4>List all apps configured in an account.</h4>
+        <h3>getApp</h3>
+        <h4>Get a single app.</h4>
+        <h3>updateApp</h3>
+        <h4>Update an app.</h4>
+        <h3>deleteApp</h3>
+        <h4>Delete an app.</h4>
+        <h3>getAppSettings</h3>
+        <h4>Get settings for an app.</h4>
+        <h3>updateAppSettings</h3>
+        <h4>Update settings for an app.</h4>
+        <h3>getAppOauth</h3>
+        <h4>Get an app's oauth settings.</h4>
+        <h3>updateAppOauth</h3>
+        <h4>Update an app's oauth settings.</h4>
+        <h3>generateAppOauth</h3>
+        <h4>When an app is first created an OAuth client/secret are automatically generated for the integration.  However,
+there are times when it maybe useful to re-generate a client/secret.  Such as in cases where a secret becomes
+compromised.
+</h4>
+        <h3>listScenes</h3>
+        <h4>Fetch a list of Scenes for the logged in user and given locationId</h4>
+        <h3>executeScene</h3>
+        <h4>Execute a Scene by id for the logged in user and given locationId</h4>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('smarthings-api-service', {
+        category: 'config',
+        defaults: {
+
+            secureTokenHeaderOrQueryName: { value: "" },
+            secureTokenIsQuery: { value: false },
+
+            name: { value: "" },
+        },
+        credentials: {
+            secureTokenValue: { type:"password" },
+            temp: { type:"text" }
+        },
+        label: function () {
+            return this.name;
+        },
+        oneditprepare: function () {
+            $('#node-config-input-secureTokenHeaderOrQueryName-label').hide();
+            $('#node-config-input-secureTokenHeaderOrQueryName').hide();
+            $('#node-config-input-secureTokenValue-label').hide();
+            $('#node-config-input-secureTokenValue').hide();
+
+            $('#node-config-input-secureTokenIsQuery-label').hide();
+            $('#node-config-input-secureTokenIsQuery').hide();
+            var selected = $('#node-config-input-secureTokenIsQuery option:selected');
+            if (!selected.val()) {
+                $('#node-config-input-secureTokenIsQuery').val('false');
+            }
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="smarthings-api-service">
+
+
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="smarthings-api-service">
+
+    <p><b>Header</b>: Variable name to set token</p>
+    <p><b>Value</b>: Value of token</p>
+</script>
